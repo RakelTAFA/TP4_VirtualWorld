@@ -88,17 +88,24 @@
     <QtRcc Include="virtualworld.qrc" />
     <QtUic Include="virtualworld.ui" />
     <QtMoc Include="virtualworld.h" />
+    <ClCompile Include="composite.cpp" />
     <ClCompile Include="controller.cpp" />
+    <ClCompile Include="group.cpp" />
     <ClCompile Include="shapecircle.cpp" />
+    <ClCompile Include="shapefactory.cpp" />
     <ClCompile Include="shapemanager.cpp" />
     <ClCompile Include="paintview.cpp" />
+    <ClCompile Include="shaperectangle.cpp" />
+    <ClCompile Include="shapesquare.cpp" />
     <ClCompile Include="treeview.cpp" />
     <ClCompile Include="virtualworld.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="composite.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="observer.h" />
+    <ClInclude Include="shapefactory.h" />
     <ClInclude Include="shapemanager.h" />
     <ClInclude Include="shape.h" />
     <QtMoc Include="view.h" />
