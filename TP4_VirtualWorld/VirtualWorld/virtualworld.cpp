@@ -26,5 +26,19 @@ VirtualWorld::~VirtualWorld()
 
 void VirtualWorld::addShape()
 {
-    ControllerAdd(shapeManager).control();
+    QString selectedRadio = "";
+
+    if (ui.radioButton_Circle->isChecked()) {
+        selectedRadio = "Circle";
+    }
+    else if (ui.radioButton_Rectangle->isChecked()) {
+        selectedRadio = "Rectangle";
+    }
+    else if (ui.radioButton_Square->isChecked()) {
+        selectedRadio = "Square";
+    }
+
+    ShapeFactory* shapeFactory = new ShapeFactory(shapeManager);
+    shapeFactory->createShape(selectedRadio);
+    delete shapeFactory;
 }

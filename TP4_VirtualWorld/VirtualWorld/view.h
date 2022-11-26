@@ -6,7 +6,7 @@
 #include <QTreeWidget>
 
 
-class PaintView : public QGraphicsScene, public Observer//: public QObject
+class PaintView : public QGraphicsScene, public Observer // public QObject
 {
 	Q_OBJECT
 private:

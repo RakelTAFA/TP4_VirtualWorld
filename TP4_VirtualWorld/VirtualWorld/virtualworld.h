@@ -3,6 +3,7 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_virtualworld.h"
 #include "view.h"
+#include "shapefactory.h"
 
 class VirtualWorld : public QMainWindow
 {

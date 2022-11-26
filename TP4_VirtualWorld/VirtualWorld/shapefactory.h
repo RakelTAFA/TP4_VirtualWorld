@@ -11,6 +11,6 @@ class ShapeFactory
 	public:
 		ShapeFactory(ShapeManager*);
 
-		void createShape(const QString&);
+		void createShape(QString&);
 };
 

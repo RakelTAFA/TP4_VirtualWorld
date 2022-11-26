@@ -2,12 +2,34 @@
 #include "shapemanager.h"
 #include <QPointF>
 
-class ControllerAdd
+
+class ControllerAdd {
+	public:
+		virtual void control() = 0;
+};
+
+class ControllerAddCircle : public ControllerAdd
 {
 	ShapeManager* shapeManager;
 public:
-	ControllerAdd(ShapeManager* = nullptr);
-	void control();
+	ControllerAddCircle(ShapeManager* = nullptr);
+	void control() override;
+};
+
+class ControllerAddRectangle : public ControllerAdd
+{
+	ShapeManager* shapeManager;
+public:
+	ControllerAddRectangle(ShapeManager* = nullptr);
+	void control() override;
+};
+
+class ControllerAddSquare : public ControllerAdd
+{
+	ShapeManager* shapeManager;
+public:
+	ControllerAddSquare(ShapeManager* = nullptr);
+	void control() override;
 };
 
 class ControllerMoveShape

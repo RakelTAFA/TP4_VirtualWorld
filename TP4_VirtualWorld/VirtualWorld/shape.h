@@ -62,13 +62,13 @@ class Rectangle : public Shape {
 };
 
 
-class Carre : public Shape {
+class Square : public Shape {
 	private:
 		double cote;
 
 	public:
-		Carre();
-		Carre(QPointF, double);
+		Square();
+		Square(QPointF, double);
 
 		void setColor() override { return; }
 		QGraphicsItem* getGraphicsItem() const override;
