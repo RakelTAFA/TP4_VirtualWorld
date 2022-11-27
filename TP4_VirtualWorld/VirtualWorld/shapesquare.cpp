@@ -14,7 +14,7 @@ Square::Square(QPointF point, double _cote) : cote(_cote) {
 
 
 QGraphicsItem* Square::getGraphicsItem() const {
-	QGraphicsItem* item = new QGraphicsRectItem(pos.x() - cote, pos.y() - cote, cote, cote);
+	QGraphicsItem* item = new QGraphicsRectItem(pos.x() - cote / 2, pos.y() - cote / 2, cote, cote);
 	item->setData(0, id);
 	return item;
 }

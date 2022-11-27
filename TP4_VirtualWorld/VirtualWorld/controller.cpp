@@ -42,7 +42,6 @@ void ControllerAddSquare::control()
 }
 
 
-
 ControllerMoveShape::ControllerMoveShape(ShapeManager* sm) : shapeManager(sm)
 {}
 

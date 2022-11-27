@@ -88,7 +88,6 @@
     <QtRcc Include="virtualworld.qrc" />
     <QtUic Include="virtualworld.ui" />
     <QtMoc Include="virtualworld.h" />
-    <ClCompile Include="composite.cpp" />
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="group.cpp" />
     <ClCompile Include="shapecircle.cpp" />
@@ -102,7 +101,6 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="composite.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="observer.h" />
     <ClInclude Include="shapefactory.h" />

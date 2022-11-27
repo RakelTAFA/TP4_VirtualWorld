@@ -30,9 +30,6 @@
     <Filter Include="Controller">
       <UniqueIdentifier>{79f8ef72-34e8-4973-acff-9e2e3ccc451b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Composite">
-      <UniqueIdentifier>{ff0079f2-352c-44da-8a3c-24e6165d80b1}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="virtualworld.qrc">
@@ -64,9 +61,6 @@
     <ClCompile Include="treeview.cpp">
       <Filter>View</Filter>
     </ClCompile>
-    <ClCompile Include="composite.cpp">
-      <Filter>Composite</Filter>
-    </ClCompile>
     <ClCompile Include="shaperectangle.cpp">
       <Filter>Model</Filter>
     </ClCompile>
@@ -92,9 +86,6 @@
     </ClInclude>
     <ClInclude Include="observer.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="composite.h">
-      <Filter>Composite</Filter>
     </ClInclude>
     <ClInclude Include="shapefactory.h">
       <Filter>Model</Filter>
