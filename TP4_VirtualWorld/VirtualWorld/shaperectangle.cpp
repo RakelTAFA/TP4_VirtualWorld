@@ -15,7 +15,9 @@ Rectangle::Rectangle(QPointF point, double _longueur, double _hauteur) : longueu
 
 
 QGraphicsItem* Rectangle::getGraphicsItem() const {
-	return nullptr;
+	QGraphicsItem* item = new QGraphicsRectItem(pos.x() - longueur, pos.y() - hauteur, longueur, hauteur);
+	item->setData(0, id);
+	return item;
 }
 
 
