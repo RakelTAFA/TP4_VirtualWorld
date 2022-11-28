@@ -47,7 +47,7 @@ void VirtualWorld::addShape()
 
 
 void VirtualWorld::removeShape() {
-    for (auto index : ui.treeWidget->selectedItems()) {
-
+    for (QTreeWidgetItem* index : ui.treeWidget->selectedItems()) {
+        //shapeManager->
     }
 }

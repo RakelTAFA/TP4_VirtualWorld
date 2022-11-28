@@ -34,3 +34,13 @@ bool ShapeManager::selectShape(int id)
 
 	return false;
 }
+
+
+void ShapeManager::remove(Shape* shape) {
+	for (int i = 0; i < shapes.size(); i++) {
+		if (shapes[i] == shape) {
+			shapes.remove(i);
+			return;
+		}
+	}
+}

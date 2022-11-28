@@ -15,6 +15,7 @@ public:
 	ShapeManager();
 	void add(Shape*);
 	void moveShape(QPointF);
+	void remove(Shape*);
 
 	bool selectShape(int);
 
