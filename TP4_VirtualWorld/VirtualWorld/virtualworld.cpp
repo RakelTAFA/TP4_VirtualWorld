@@ -12,6 +12,7 @@ VirtualWorld::VirtualWorld(QWidget *parent, ShapeManager* sm)
     shapeManager->addObserver(paintview);
     ui.graphicsView->setScene(paintview);
     paintview->setParent(ui.graphicsView);
+   
 
     // Tree View
     treeview = new TreeView(shapeManager, ui.treeWidget);
@@ -19,6 +20,7 @@ VirtualWorld::VirtualWorld(QWidget *parent, ShapeManager* sm)
 
     // Connect buttons
     connect(ui.Object_AddButton, &QPushButton::pressed, this, &VirtualWorld::addShape);
+    connect(ui.Object_RemoveButton, &QPushButton::pressed, this, &VirtualWorld::removeShape);
 }
 
 VirtualWorld::~VirtualWorld()
@@ -38,7 +40,14 @@ void VirtualWorld::addShape()
         selectedRadio = "Square";
     }
 
-    ShapeFactory* shapeFactory = new ShapeFactory(shapeManager);
-    shapeFactory->createShape(selectedRadio);
-    delete shapeFactory;
+    ControllerAdd* controller = new ControllerAdd(shapeManager);
+    controller->control(selectedRadio);
+    delete controller;
+}
+
+
+void VirtualWorld::removeShape() {
+    for (auto index : ui.treeWidget->selectedItems()) {
+
+    }
 }

@@ -5,42 +5,24 @@
 #include <iostream>
 #include <ctime>
 
-ControllerAddCircle::ControllerAddCircle(ShapeManager* sm) : shapeManager(sm)
+ControllerAdd::ControllerAdd(ShapeManager* sm) : shapeManager(sm)
 {}
 
-void ControllerAddCircle::control()
+void ControllerAdd::control(QString& shapeString)
 {
 	if (shapeManager == nullptr) return;
 
-	// Add Shape
-	shapeManager->add(new Circle(QPointF(std::rand() % 400 - 200, std::rand() % 400 - 200), std::rand() % 100));
-	//shapeManager->add(new Circle(QPointF(0., 0.), 100.));
-}
-
-ControllerAddRectangle::ControllerAddRectangle(ShapeManager* sm) : shapeManager(sm)
-{}
-
-void ControllerAddRectangle::control()
-{
-	if (shapeManager == nullptr) return;
+	ShapeFactory* factory = new ShapeFactory(shapeManager);
+	Shape* shapeCreated = factory->createShape(shapeString);
 
 	// Add Shape
-	shapeManager->add(new Rectangle(QPointF(std::rand() % 400 - 200, std::rand() % 400 - 200), std::rand() % 100, std::rand() % 100));
-	//shapeManager->add(new Circle(QPointF(0., 0.), 100.));
+
+	if (shapeCreated != nullptr) {
+		shapeManager->add(shapeCreated);
+		//shapeCreated->getGraphicsItem();
+	}
+	delete factory;
 }
-
-ControllerAddSquare::ControllerAddSquare(ShapeManager* sm) : shapeManager(sm)
-{}
-
-void ControllerAddSquare::control()
-{
-	if (shapeManager == nullptr) return;
-
-	// Add Shape
-	shapeManager->add(new Square(QPointF(std::rand() % 400 - 200, std::rand() % 400 - 200), std::rand() % 100));
-	//shapeManager->add(new Circle(QPointF(0., 0.), 100.));
-}
-
 
 ControllerMoveShape::ControllerMoveShape(ShapeManager* sm) : shapeManager(sm)
 {}

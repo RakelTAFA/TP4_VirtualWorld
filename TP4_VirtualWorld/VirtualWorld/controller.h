@@ -1,35 +1,16 @@
 #pragma once
 #include "shapemanager.h"
+#include "shapefactory.h"
 #include <QPointF>
 
 
 class ControllerAdd {
+	private:
+		ShapeManager* shapeManager;
+
 	public:
-		virtual void control() = 0;
-};
-
-class ControllerAddCircle : public ControllerAdd
-{
-	ShapeManager* shapeManager;
-public:
-	ControllerAddCircle(ShapeManager* = nullptr);
-	void control() override;
-};
-
-class ControllerAddRectangle : public ControllerAdd
-{
-	ShapeManager* shapeManager;
-public:
-	ControllerAddRectangle(ShapeManager* = nullptr);
-	void control() override;
-};
-
-class ControllerAddSquare : public ControllerAdd
-{
-	ShapeManager* shapeManager;
-public:
-	ControllerAddSquare(ShapeManager* = nullptr);
-	void control() override;
+		ControllerAdd(ShapeManager*);
+		void control(QString&);
 };
 
 class ControllerMoveShape
@@ -38,4 +19,13 @@ class ControllerMoveShape
 public:
 	ControllerMoveShape(ShapeManager* = nullptr);
     void control(const QVector<QGraphicsItem *> &);
+};
+
+class ControllerRemove
+{
+	private:
+		ShapeManager* shapeManager;
+
+	public:
+		ControllerRemove(ShapeManager* sm) : shapeManager(sm) { ; }
 };

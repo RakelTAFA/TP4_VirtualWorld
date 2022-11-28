@@ -15,6 +15,7 @@ public:
 
 public slots:
     void addShape();
+    void removeShape();
 
 private:
     Ui::VirtualWorldClass ui;

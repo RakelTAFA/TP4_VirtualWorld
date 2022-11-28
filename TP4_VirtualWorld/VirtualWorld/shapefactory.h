@@ -10,7 +10,6 @@ class ShapeFactory
 
 	public:
 		ShapeFactory(ShapeManager*);
-
-		void createShape(QString&);
+		Shape* createShape(QString&);
 };
 

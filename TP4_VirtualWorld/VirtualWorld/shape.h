@@ -6,12 +6,12 @@
 
 class Shape {
 	public:
-		virtual void setColor() = 0;
 
 		QPointF pos;
 		int id;
 		static int current_id;
 
+		virtual void setColor() = 0;
 		virtual QGraphicsItem* getGraphicsItem() const = 0;
 		virtual QString type() const = 0 ;
 };

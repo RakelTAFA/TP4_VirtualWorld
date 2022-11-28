@@ -8,25 +8,19 @@ ShapeFactory::ShapeFactory(ShapeManager* _shapeManager) : shapeManager(_shapeMan
 }
 
 
-void ShapeFactory::createShape(QString& shapeString) {
+Shape* ShapeFactory::createShape(QString& shapeString) {
 	
 	if (shapeString == "Circle") {
-		ControllerAdd* controllerAdd = new ControllerAddCircle(shapeManager);
-		controllerAdd->control();
-		delete controllerAdd;
+		return new Circle(QPointF(std::rand() % 400 - 200, std::rand() % 400 - 200), std::rand() % 100 + 1);
 	}
 	else if (shapeString == "Rectangle") {
-		ControllerAdd* controllerAdd = new ControllerAddRectangle(shapeManager);
-		controllerAdd->control();
-		delete controllerAdd;
+		return new Rectangle(QPointF(std::rand() % 400 - 200, std::rand() % 400 - 200), std::rand() % 100 + 1, std::rand() % 100 + 1);
 	}
 	else if (shapeString == "Square") {
-		ControllerAdd* controllerAdd = new ControllerAddSquare(shapeManager);
-		controllerAdd->control();
-		delete controllerAdd;
+		return new Square(QPointF(std::rand() % 400 - 200, std::rand() % 400 - 200), std::rand() % 100 + 1);
 	}
 	else {
 		cout << "No shape created" << endl;
-		return;
 	}
+	return nullptr;
 }

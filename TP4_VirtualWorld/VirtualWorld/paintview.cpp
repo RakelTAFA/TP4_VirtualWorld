@@ -5,6 +5,7 @@
 
 PaintView::PaintView( ShapeManager* sm) : QGraphicsScene(), Observer(), shapeManager(sm)
 {
+	selectionStarted = false;
 }
 
 void PaintView::drawForeground(QPainter* painter, const QRectF& rect)
@@ -49,21 +50,40 @@ void PaintView::updateModel()
 void PaintView::mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent)
 {
 
+
+	
 	if (mouseEvent->button() == Qt::LeftButton)
 	{
+
 		mousePos = mouseEvent->scenePos();
 		toolbox = "mousePressEvent (" + QString::number(mousePos.x()) + "," + QString::number(mousePos.y());
 
 		selected = this->items(mousePos);
+
+		if (selected.size() == 0) {
+			selectionStarted = true;
+			selectionRect.setTopLeft(QPoint(mousePos.x(), mousePos.y()));
+			selectionRect.setBottomRight(QPoint(mousePos.x(), mousePos.y()));
+		}
+
+		else if (selected.size() > 0) {
+
+		}
 	}
+	
 
 	update();
 }
 
 void PaintView::mouseMoveEvent(QGraphicsSceneMouseEvent* mouseEvent)
 {
-	if ( selected.size() > 0 && (mouseEvent->buttons() & Qt::LeftButton))
+	if (selected.size() > 0 && (mouseEvent->buttons() & Qt::LeftButton))
 	{
+		if (selectionStarted) {
+			selectionRect.setBottomRight(QPoint(mousePos.x(), mousePos.y()));
+			//repaint();
+		}
+
 		QPointF mousePosNew = mouseEvent->scenePos();
 
 		toolbox = "mouseMoveEvent (" + QString::number(mousePosNew.x()) + "," + QString::number(mousePosNew.y());

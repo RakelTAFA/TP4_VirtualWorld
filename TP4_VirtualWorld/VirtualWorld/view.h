@@ -15,6 +15,8 @@ private:
 	QVector<QGraphicsItem*> tools;
 	QPointF mousePos;
 	QString toolbox;
+	QRect selectionRect;
+	bool selectionStarted;
 
 public:
 	PaintView(ShapeManager* = nullptr);
