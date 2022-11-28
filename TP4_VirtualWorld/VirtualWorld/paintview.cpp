@@ -1,5 +1,6 @@
 #include "view.h"
 #include <QGraphicsItem>
+#include <qgraphicsscene.h>
 #include <QGraphicsSceneMouseEvent>
 
 PaintView::PaintView( ShapeManager* sm) : QGraphicsScene(), Observer(), shapeManager(sm)
@@ -47,6 +48,7 @@ void PaintView::updateModel()
 
 void PaintView::mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent)
 {
+
 	if (mouseEvent->button() == Qt::LeftButton)
 	{
 		mousePos = mouseEvent->scenePos();
