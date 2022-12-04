@@ -2,6 +2,7 @@
 #include "shapemanager.h"
 #include "shapefactory.h"
 #include <QPointF>
+#include <QTreeWidget>
 
 
 class ControllerAdd {
@@ -28,4 +29,5 @@ class ControllerRemove
 
 	public:
 		ControllerRemove(ShapeManager* sm) : shapeManager(sm) { ; }
+		void control(const QTreeWidgetItem*);
 };

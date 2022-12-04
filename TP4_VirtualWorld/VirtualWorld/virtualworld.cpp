@@ -20,6 +20,7 @@ VirtualWorld::VirtualWorld(QWidget *parent, ShapeManager* sm)
 
     // Connect buttons
     connect(ui.Object_AddButton, &QPushButton::pressed, this, &VirtualWorld::addShape);
+    connect(ui.Object_AddButton, &QPushButton::pressed, this, &VirtualWorld::addGroup);
     connect(ui.Object_RemoveButton, &QPushButton::pressed, this, &VirtualWorld::removeShape);
 }
 
@@ -48,6 +49,10 @@ void VirtualWorld::addShape()
 
 void VirtualWorld::removeShape() {
     for (QTreeWidgetItem* index : ui.treeWidget->selectedItems()) {
-        //shapeManager->
+        // paintview->saveSelection();
+        ControllerRemove* controller = new ControllerRemove(shapeManager);
+        controller->control(index);
+        delete controller;
+        // paintview->setSelection();
     }
 }

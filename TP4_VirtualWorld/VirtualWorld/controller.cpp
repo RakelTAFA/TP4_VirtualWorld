@@ -13,7 +13,7 @@ void ControllerAdd::control(QString& shapeString)
 	if (shapeManager == nullptr) return;
 
 	ShapeFactory* factory = new ShapeFactory(shapeManager);
-	Shape* shapeCreated = factory->createShape(shapeString);
+	Shape* shapeCreated = factory->c reateShape(shapeString);
 
 	// Add Shape
 
@@ -47,3 +47,23 @@ void ControllerMoveShape::control(const QVector<QGraphicsItem*>& items)
 
 	shapeManager->notifyObserver();
 }
+
+
+void ControllerRemove::control(const QTreeWidgetItem* item)
+{
+	if (shapeManager == nullptr) return;
+
+	QVariant variant = item->text(0);
+	int id = variant.toInt();
+
+	for (Shape* shape : shapeManager->getShapes())
+	{
+		if (shape->id == id)
+		{
+			shapeManager->remove(shape);
+		}
+	}
+
+	shapeManager->notifyObserver();
+}
+

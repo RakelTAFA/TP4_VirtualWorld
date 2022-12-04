@@ -15,6 +15,7 @@ public:
 
 public slots:
     void addShape();
+    void addGroup();
     void removeShape();
 
 private:
