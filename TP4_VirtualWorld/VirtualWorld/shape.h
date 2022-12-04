@@ -1,6 +1,7 @@
 #pragma once
 #include <QPointF>
 #include <QGraphicsItem>
+#include <QTreeWidget>
 #include<QVector>
 
 
@@ -13,7 +14,9 @@ class Shape {
 
 		virtual void setColor() = 0;
 		virtual QGraphicsItem* getGraphicsItem() const = 0;
-		virtual QString type() const = 0 ;
+		virtual QString type() const = 0;
+		virtual void move(QPointF) = 0;
+		virtual void getTreeWidgetItem(QTreeWidget*, QTreeWidgetItem* = nullptr) const = 0;
 };
 
 
@@ -27,6 +30,10 @@ class Group : public Shape {
 		void setColor() override { return ; }
 		QGraphicsItem* getGraphicsItem() const override;
 		QString type() const override;
+		void add(Shape*);
+		void move(QPointF) override;
+		void getTreeWidgetItem(QTreeWidget*, QTreeWidgetItem* = nullptr) const override;
+
 };
 
 
@@ -44,6 +51,8 @@ public:
 	void setColor() override { return; }
 	QGraphicsItem* getGraphicsItem() const override;
 	QString type() const override;
+	void getTreeWidgetItem(QTreeWidget*, QTreeWidgetItem* = nullptr) const override;
+	void move(QPointF) override;
 };
 
 
@@ -59,6 +68,8 @@ class Rectangle : public Shape {
 		void setColor() override { return; }
 		QGraphicsItem* getGraphicsItem() const override;
 		QString type() const override;
+		void move(QPointF) override;
+		void getTreeWidgetItem(QTreeWidget*, QTreeWidgetItem* = nullptr) const override;
 };
 
 
@@ -73,4 +84,6 @@ class Square : public Shape {
 		void setColor() override { return; }
 		QGraphicsItem* getGraphicsItem() const override;
 		QString type() const override;
+		void move(QPointF) override;
+		void getTreeWidgetItem(QTreeWidget*, QTreeWidgetItem* = nullptr) const override;
 };

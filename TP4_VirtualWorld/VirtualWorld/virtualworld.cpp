@@ -49,16 +49,17 @@ void VirtualWorld::addShape()
 
 void VirtualWorld::removeShape() {
     for (QTreeWidgetItem* index : ui.treeWidget->selectedItems()) {
-        // paintview->saveSelection();
+        paintview->saveSelection();
         ControllerRemove* controller = new ControllerRemove(shapeManager);
         controller->control(index);
         delete controller;
-        // paintview->setSelection();
+        paintview->setSelection();
     }
 }
 
 
 void VirtualWorld::addGroup()
 {
+    paintview->saveSelection();
     return;
 }

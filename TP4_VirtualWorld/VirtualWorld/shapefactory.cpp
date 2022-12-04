@@ -24,3 +24,14 @@ Shape* ShapeFactory::createShape(QString& shapeString) {
 	}
 	return nullptr;
 }
+
+
+Shape* ShapeFactory::createShape(QVector<Shape*> _shapes)
+{
+	Group* group = new Group();
+	for (Shape* shape : _shapes)
+	{
+		group->add(shape);
+	}
+	return group;
+}

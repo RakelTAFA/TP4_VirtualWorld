@@ -31,3 +31,13 @@ class ControllerRemove
 		ControllerRemove(ShapeManager* sm) : shapeManager(sm) { ; }
 		void control(const QTreeWidgetItem*);
 };
+
+class ControllerGroup
+{
+	private:
+		ShapeManager* shapeManager;
+
+	public:
+		ControllerGroup(ShapeManager* sm) : shapeManager(sm) { ; }
+		void control(const QVector<QGraphicsItem*>);
+};

@@ -23,3 +23,22 @@ QGraphicsItem* Square::getGraphicsItem() const {
 QString Square::type() const {
 	return "Square";
 }
+
+
+void Square::getTreeWidgetItem(QTreeWidget* treeview, QTreeWidgetItem* _item) const {
+	QTreeWidgetItem* item;
+	if (_item == nullptr) {
+		item = new QTreeWidgetItem(treeview);
+	}
+	else {
+		item = new QTreeWidgetItem(_item);
+	}
+
+	item->setText(0, QString::number(id));
+	item->setText(1, type());
+}
+
+
+void Square::move(QPointF _pos) {
+	pos += _pos;
+}

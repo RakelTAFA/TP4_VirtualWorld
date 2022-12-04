@@ -11,5 +11,6 @@ class ShapeFactory
 	public:
 		ShapeFactory(ShapeManager*);
 		Shape* createShape(QString&);
+		Shape* createShape(QVector<Shape*>);
 };
 

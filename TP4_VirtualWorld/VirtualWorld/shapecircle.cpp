@@ -29,3 +29,22 @@ QString Circle::type() const
 {
 	return "Circle";
 }
+
+
+void Circle::getTreeWidgetItem(QTreeWidget* treeview, QTreeWidgetItem* _item) const {
+	QTreeWidgetItem* item;
+	if (_item == nullptr) {
+		item = new QTreeWidgetItem(treeview);
+	}
+	else {
+		item = new QTreeWidgetItem(_item);
+	}
+
+	item->setText(0, QString::number(id));
+	item->setText(1, type());
+}
+
+
+void Circle::move(QPointF _pos) {
+	pos += _pos;
+}
