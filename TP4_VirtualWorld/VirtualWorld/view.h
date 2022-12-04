@@ -18,6 +18,7 @@ private:
 	QString toolbox;
 	QRect selectionRect;
 	bool selectionStarted;
+	QVector<QVariant> save;
 
 public:
 	PaintView(ShapeManager* = nullptr);

@@ -140,10 +140,57 @@ void PaintView::mouseReleaseEvent(QGraphicsSceneMouseEvent* mouseEvent)
 {
 	toolbox = "mouseReleaseEvent";
 
-	// Call Controller to modify the model
-	(new ControllerMoveShape(shapeManager))->control(selected);
-
-	selected.clear();
+	if (selected.size() > 0)
+	{
+		saveSelection();
+		(new ControllerMoveShape(shapeManager))->control(selected);
+		setSelection();
+	}
+	else if (selectionStarted)
+	{
+		selectionStarted = false;
+		QRectF rect = QRectF(mousePos.x(), mousePos.y(), mouseD.x(), mouseD.y());
+		for (QGraphicsItem* item : items())
+		{
+			if (rect.contains(item->boundingRect().center()) && item->parentItem() == nullptr)
+			{
+				selected.append(item);
+			}
+		}
+	}
 
 	update();
+}
+
+
+void PaintView::saveSelection()
+{
+	save.clear();
+	for (QGraphicsItem* item : items())
+	{
+		save.append(item->data(0));
+	}
+}
+
+
+void PaintView::setSelection()
+{
+	selected.clear();
+	for (QVariant var : save)
+	{
+		for (QGraphicsItem* item : items())
+		{
+			if (var == item->data(0))
+			{
+				selected.append(item);
+				break;
+			}
+		}
+	}
+}
+
+
+QVector<QGraphicsItem*> PaintView::getSelect()
+{
+	return selected;
 }
