@@ -13,7 +13,7 @@ void ControllerAdd::control(QString& shapeString)
 	if (shapeManager == nullptr) return;
 
 	ShapeFactory* factory = new ShapeFactory(shapeManager);
-	Shape* shapeCreated = factory->c reateShape(shapeString);
+	Shape* shapeCreated = factory->createShape(shapeString);
 
 	// Add Shape
 

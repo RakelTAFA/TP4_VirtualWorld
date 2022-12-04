@@ -56,3 +56,9 @@ void VirtualWorld::removeShape() {
         // paintview->setSelection();
     }
 }
+
+
+void VirtualWorld::addGroup()
+{
+    return;
+}
