@@ -115,20 +115,22 @@ void PaintView::mouseMoveEvent(QGraphicsSceneMouseEvent* mouseEvent)
 {
 	if (selected.size() > 0 && (mouseEvent->buttons() & Qt::LeftButton))
 	{
-		if (selectionStarted) {
-			selectionRect.setBottomRight(QPoint(mousePos.x(), mousePos.y()));
-			//repaint();
-		}
-
 		QPointF mousePosNew = mouseEvent->scenePos();
 
-		toolbox = "mouseMoveEvent (" + QString::number(mousePosNew.x()) + "," + QString::number(mousePosNew.y());
-		QPointF mouseD = mousePosNew - mousePos;
+		toolbox = "mouseMoveEvent (" + QString::number(mousePosNew.x()) + "," + QString::number(mousePosNew.y()) + ")";
+		mouseD = mousePosNew - mousePos;
+
 		for (QGraphicsItem* item : selected)
 		{
 			item->moveBy(mouseD.x(), mouseD.y());
 		}
 		mousePos = mousePosNew;
+	}
+	else if (selectionStarted)
+	{
+		QPointF mousePosNew = mouseEvent->scenePos();
+		toolbox = "mouseRightMoveEvent (" + QString::number(mousePosNew.x()) + "," + QString::number(mousePosNew.y()) + ")";
+		mouseD = mousePosNew - mousePos;
 	}
 
 	update();
