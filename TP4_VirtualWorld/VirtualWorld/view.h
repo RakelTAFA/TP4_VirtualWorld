@@ -14,6 +14,7 @@ private:
 	QVector<QGraphicsItem*> selected;
 	QVector<QGraphicsItem*> tools;
 	QPointF mousePos;
+	QPointF mouseD;
 	QString toolbox;
 	QRect selectionRect;
 	bool selectionStarted;
@@ -22,6 +23,9 @@ public:
 	PaintView(ShapeManager* = nullptr);
 
 	void updateModel();
+	void saveSelection();
+	void setSelection();
+	QVector<QGraphicsItem*> getSelect();
 
 protected:
 
@@ -32,6 +36,7 @@ public slots:
 	void mouseReleaseEvent(QGraphicsSceneMouseEvent* mouseEvent);
 	void mouseMoveEvent(QGraphicsSceneMouseEvent* mouseEvent);
 };
+
 
 class TreeView : public Observer
 {

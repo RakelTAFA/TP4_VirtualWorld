@@ -24,6 +24,26 @@ void PaintView::drawForeground(QPainter* painter, const QRectF& rect)
 	painter->drawRect(p1.x() + 10, p1.y() + 10, toolbox.size() * 7, 20);
 	painter->drawText(int(p1.x() + 14), int(p1.y() + 12), toolbox.size() * 10, 20, Qt::AlignLeft, toolbox);
 
+	QColor blue = Qt::blue;
+	blue.setAlpha(0.03);
+
+	if (selectionStarted)
+	{
+		painter->setBrush(blue);
+		painter->setPen(Qt::blue);
+		painter->drawRect(mousePos.x(), mousePos.y(), mouseD.x(), mouseD.y());
+	}
+
+	if (selected.size() > 0)
+	{
+		painter->setBrush(blue);
+		painter->setPen(Qt::blue);
+		for (QGraphicsItem* item : selected)
+		{
+			painter->drawRect(item->boundingRect());
+		}
+	}
+
 	painter->restore();
 
 }
