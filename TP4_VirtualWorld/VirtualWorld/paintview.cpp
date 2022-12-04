@@ -45,7 +45,6 @@ void PaintView::drawForeground(QPainter* painter, const QRectF& rect)
 	}
 
 	painter->restore();
-
 }
 
 void PaintView::updateModel()
@@ -74,20 +73,37 @@ void PaintView::mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent)
 	
 	if (mouseEvent->button() == Qt::LeftButton)
 	{
-
+		selected.clear();
 		mousePos = mouseEvent->scenePos();
 		toolbox = "mousePressEvent (" + QString::number(mousePos.x()) + "," + QString::number(mousePos.y());
 
-		selected = this->items(mousePos);
-
-		if (selected.size() == 0) {
-			selectionStarted = true;
-			selectionRect.setTopLeft(QPoint(mousePos.x(), mousePos.y()));
-			selectionRect.setBottomRight(QPoint(mousePos.x(), mousePos.y()));
+		for (QGraphicsItem* item : items(mousePos))
+		{
+			if (item->parentItem() == nullptr)
+			{
+				selected.append(item);
+			}
 		}
+	}
+	else if (mouseEvent->button() == Qt::RightButton)
+	{
+		mousePos = mouseEvent->scenePos();
+		mouseD = QPoint(0, 0);
+		toolbox = "mouseRightPressEvent (" + QString::number(mousePos.x()) + "," + QString::number(mousePos.y()) + ")";
 
-		else if (selected.size() > 0) {
-
+		bool containtItem = false;
+		for (QGraphicsItem* item : selected)
+		{
+			if (item->boundingRect().contains(mousePos))
+			{
+				containtItem = true;
+				break;
+			}
+		}
+		if (!containtItem)
+		{
+			selectionStarted = true;
+			selected.clear();
 		}
 	}
 	
