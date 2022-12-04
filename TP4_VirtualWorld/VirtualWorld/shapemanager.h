@@ -16,6 +16,7 @@ public:
 	void add(Shape*);
 	void moveShape(QPointF);
 	void remove(Shape*);
+	void removeGroup(Shape*);
 
 	bool selectShape(int);
 

@@ -36,11 +36,17 @@ bool ShapeManager::selectShape(int id)
 }
 
 
-void ShapeManager::remove(Shape* shape) {
-	for (int i = 0; i < shapes.size(); i++) {
-		if (shapes[i] == shape) {
-			shapes.remove(i);
-			return;
-		}
+void ShapeManager::remove(Shape* _shape) {
+	shapes.removeOne(_shape);
+	notifyObserver();
+}
+
+
+
+void ShapeManager::removeGroup(Shape* _shape) {
+	for (Shape* shape : getShapes()) {
+		shapes.append(shape);
 	}
+	shapes.removeOne(_shape);
+	notifyObserver();
 }

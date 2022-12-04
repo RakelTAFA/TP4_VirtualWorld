@@ -41,3 +41,14 @@ class ControllerGroup
 		ControllerGroup(ShapeManager* sm) : shapeManager(sm) { ; }
 		void control(const QVector<QGraphicsItem*>);
 };
+
+
+class ControllerRemoveGroup
+{
+private:
+	ShapeManager* shapeManager;
+
+public:
+	ControllerRemoveGroup(ShapeManager* sm) : shapeManager(sm) { ; }
+	void control(const QVector<QGraphicsItem*>);
+};

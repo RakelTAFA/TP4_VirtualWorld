@@ -19,7 +19,6 @@ void ControllerAdd::control(QString& shapeString)
 
 	if (shapeCreated != nullptr) {
 		shapeManager->add(shapeCreated);
-		//shapeCreated->getGraphicsItem();
 	}
 	delete factory;
 }
@@ -86,5 +85,32 @@ void ControllerGroup::control(const QVector<QGraphicsItem*> items)
 	}
 	ShapeFactory* factory = new ShapeFactory(shapeManager);
 	Shape* shapeCreated = factory->createShape(_shapes);
-	
+
+	if (shapeCreated != nullptr) {
+		shapeManager->add(shapeCreated);
+		for (Shape* shape : _shapes) {
+			shapeManager->remove(shape);
+		}
+	}
+	delete factory;
+}
+
+
+void ControllerRemoveGroup::control(QVector<QGraphicsItem*> items) {
+	if (shapeManager == nullptr) return;
+	QVector<Shape*> _shapes;
+
+	for (QGraphicsItem* item : items)
+	{
+		for (Shape* shape : shapeManager->getShapes())
+		{
+			if (shape->id == item->data(0))
+			{
+				shapeManager->removeGroup(shape);
+				break;
+			}
+		}
+	}
+
+	shapeManager->notifyObserver();
 }
