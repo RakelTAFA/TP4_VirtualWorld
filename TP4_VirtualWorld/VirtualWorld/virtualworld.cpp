@@ -61,5 +61,8 @@ void VirtualWorld::removeShape() {
 void VirtualWorld::addGroup()
 {
     paintview->saveSelection();
-    return;
+    ControllerGroup* controller = new ControllerGroup(shapeManager);
+    controller->control(paintview->getSelect());
+    delete controller;
+    paintview->setSelection();
 }
