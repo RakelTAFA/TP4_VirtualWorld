@@ -33,3 +33,13 @@ Shape* ShapeFactory::createShape(QVector<Shape*> _shapes) {
 	}
 	return group;
 }
+
+Shape* ShapeFactory::createRectCar(QString&, QPointF, double, double)
+{
+	return nullptr;
+}
+
+Shape* ShapeFactory::createCircleCar(QString&, QPointF, double)
+{
+	return nullptr;
+}

@@ -7,5 +7,9 @@ Voiture::Voiture(QPointF p, double d1, double d2)
 {
 	QString s = "Rectangle";
 	pos = p;
-	//ShapeFactory* sf = new ShapeFactory();
+
+	//add(ShapeFactory::createRectCar(s, pos));
+	
+	//QPointF p1();
+	//QPointF p2();
 }

@@ -12,5 +12,8 @@ class ShapeFactory
 		ShapeFactory();
 		Shape* createShape(QString&);
 		Shape* createShape(QVector<Shape*>);
+
+		static Shape* createRectCar(QString&, QPointF, double, double);
+		static Shape* createCircleCar(QString&, QPointF, double);
 };
 
