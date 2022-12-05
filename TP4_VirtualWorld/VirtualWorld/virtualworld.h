@@ -3,20 +3,20 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_virtualworld.h"
 #include "view.h"
-#include "shapefactory.h"
 
 class VirtualWorld : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    VirtualWorld(QWidget *parent = nullptr, ShapeManager* = nullptr);
+    VirtualWorld(QWidget* parent = nullptr, ShapeManager* = nullptr);
     ~VirtualWorld();
 
 public slots:
     void addShape();
-    void addGroup();
     void removeShape();
+    void addGroup();
+    void removeGroup();
 
 private:
     Ui::VirtualWorldClass ui;

@@ -6,10 +6,10 @@
 class ShapeFactory
 {
 	private:
-		ShapeManager* shapeManager;
+		//ShapeManager* shapeManager;
 
 	public:
-		ShapeFactory(ShapeManager*);
+		ShapeFactory();
 		Shape* createShape(QString&);
 		Shape* createShape(QVector<Shape*>);
 };

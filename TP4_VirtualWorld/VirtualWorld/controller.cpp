@@ -1,6 +1,4 @@
 #include "controller.h"
-#include "shapemanager.h"
-
 #include <cstdlib>
 #include <iostream>
 #include <ctime>
@@ -12,7 +10,7 @@ void ControllerAdd::control(QString& shapeString)
 {
 	if (shapeManager == nullptr) return;
 
-	ShapeFactory* factory = new ShapeFactory(shapeManager);
+	ShapeFactory* factory = new ShapeFactory();
 	Shape* shapeCreated = factory->createShape(shapeString);
 
 	// Add Shape
@@ -40,16 +38,14 @@ void ControllerMoveShape::control(const QVector<QGraphicsItem*>& items)
 		if (selected)
 		{
 			QRectF rect = item->boundingRect();
-			shapeManager->moveShape(item->scenePos() + rect.center());
+			shapeManager->moveShape(item->scenePos());
 		}
 	}
 
 	shapeManager->notifyObserver();
 }
 
-
-void ControllerRemove::control(const QTreeWidgetItem* item)
-{
+void ControllerRemove::control(const QTreeWidgetItem* item) {
 	if (shapeManager == nullptr) return;
 
 	QVariant variant = item->text(0);
@@ -66,15 +62,11 @@ void ControllerRemove::control(const QTreeWidgetItem* item)
 	shapeManager->notifyObserver();
 }
 
-
-void ControllerGroup::control(const QVector<QGraphicsItem*> items)
-{
+void ControllerGroup::control(QVector<QGraphicsItem*> items) {
 	if (shapeManager == nullptr) return;
-
 	QVector<Shape*> _shapes;
 
-	for (QGraphicsItem* item : items)
-	{
+	for (QGraphicsItem* item : items) {
 		for (Shape* shape : shapeManager->getShapes())
 		{
 			if (shape->id == item->data(0))
@@ -83,8 +75,11 @@ void ControllerGroup::control(const QVector<QGraphicsItem*> items)
 			}
 		}
 	}
-	ShapeFactory* factory = new ShapeFactory(shapeManager);
+
+	ShapeFactory* factory = new ShapeFactory();
 	Shape* shapeCreated = factory->createShape(_shapes);
+
+	// Add Shape
 
 	if (shapeCreated != nullptr) {
 		shapeManager->add(shapeCreated);
@@ -95,13 +90,11 @@ void ControllerGroup::control(const QVector<QGraphicsItem*> items)
 	delete factory;
 }
 
-
 void ControllerRemoveGroup::control(QVector<QGraphicsItem*> items) {
 	if (shapeManager == nullptr) return;
 	QVector<Shape*> _shapes;
 
-	for (QGraphicsItem* item : items)
-	{
+	for (QGraphicsItem* item : items) {
 		for (Shape* shape : shapeManager->getShapes())
 		{
 			if (shape->id == item->data(0))

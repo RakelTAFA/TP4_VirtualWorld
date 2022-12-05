@@ -13,31 +13,30 @@ private:
 	ShapeManager* shapeManager;
 	QVector<QGraphicsItem*> selected;
 	QVector<QGraphicsItem*> tools;
+	QVector<QVariant> save;
 	QPointF mousePos;
 	QPointF mouseD;
 	QString toolbox;
-	QRect selectionRect;
 	bool selectionStarted;
-	QVector<QVariant> save;
 
 public:
 	PaintView(ShapeManager* = nullptr);
 
 	void updateModel();
-	void saveSelection();
-	void setSelection();
+	void saveSelect();
+	void setSelect();
 	QVector<QGraphicsItem*> getSelect();
 
 protected:
 
-    void drawForeground(QPainter* painter, const QRectF& rect);
+	void drawBackground(QPainter* painter, const QRectF& rect);
+	void drawForeground(QPainter* painter, const QRectF& rect);
 
 public slots:
 	void mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent);
 	void mouseReleaseEvent(QGraphicsSceneMouseEvent* mouseEvent);
 	void mouseMoveEvent(QGraphicsSceneMouseEvent* mouseEvent);
 };
-
 
 class TreeView : public Observer
 {

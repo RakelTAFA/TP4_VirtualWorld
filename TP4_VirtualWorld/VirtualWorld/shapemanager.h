@@ -1,5 +1,4 @@
 #pragma once
-
 #include "shape.h"
 #include "observer.h"
 #include <QVector>
@@ -20,6 +19,6 @@ public:
 
 	bool selectShape(int);
 
-    const QVector<Shape*>& getShapes() const { return shapes; }
+	const QVector<Shape*>& getShapes() const { return shapes; }
 };
 

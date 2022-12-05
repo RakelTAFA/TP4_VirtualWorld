@@ -73,6 +73,9 @@
     <ClCompile Include="group.cpp">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="car.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shape.h">

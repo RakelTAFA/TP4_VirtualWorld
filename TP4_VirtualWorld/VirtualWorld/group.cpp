@@ -8,16 +8,10 @@ Group::Group() {
 QGraphicsItem* Group::getGraphicsItem() const {
 	QGraphicsItemGroup* item = new QGraphicsItemGroup();
 	item->setData(0, id);
-	for (Shape* shape : shapeList)
-	{
+	for (Shape* shape : shapeList) {
 		item->addToGroup(shape->getGraphicsItem());
 	}
 	return item;
-}
-
-
-QString Group::type() const {
-	return "Group";
 }
 
 
@@ -37,14 +31,25 @@ void Group::getTreeWidgetItem(QTreeWidget* treeview, QTreeWidgetItem* _item) con
 	}
 }
 
+QString Group::type() const {
+	return "Group";
+}
 
 void Group::add(Shape* shape) {
 	shapeList.append(shape);
-}
 
+}
 
 void Group::move(QPointF _pos) {
 	for (Shape* shape : shapeList) {
 		shape->move(_pos);
 	}
+}
+
+QVector<Shape*> Group::getList() {
+	return shapeList;
+}
+
+QVector<Shape*> Group::getShape() {
+	return shapeList;
 }

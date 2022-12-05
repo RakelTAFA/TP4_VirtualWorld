@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>875</width>
+    <width>971</width>
     <height>575</height>
    </rect>
   </property>
@@ -15,79 +15,21 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="spacing">
-     <number>0</number>
-    </property>
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
-     <number>0</number>
-    </property>
     <item>
      <widget class="QWidget" name="widget" native="true">
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QGraphicsView" name="graphicsView">
-         <property name="dragMode">
-          <enum>QGraphicsView::NoDrag</enum>
-         </property>
-         <property name="viewportUpdateMode">
-          <enum>QGraphicsView::SmartViewportUpdate</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QWidget" name="widget_2" native="true">
-      <property name="minimumSize">
-       <size>
-        <width>200</width>
-        <height>0</height>
-       </size>
-      </property>
       <property name="maximumSize">
        <size>
         <width>200</width>
         <height>16777215</height>
        </size>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QGroupBox" name="groupBox">
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>150</height>
+           <height>180</height>
           </size>
          </property>
          <property name="title">
@@ -114,7 +56,7 @@
            <rect>
             <x>20</x>
             <y>40</y>
-            <width>89</width>
+            <width>81</width>
             <height>20</height>
            </rect>
           </property>
@@ -139,7 +81,7 @@
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>120</y>
+            <y>140</y>
             <width>75</width>
             <height>24</height>
            </rect>
@@ -152,7 +94,7 @@
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>90</y>
+            <y>110</y>
             <width>75</width>
             <height>24</height>
            </rect>
@@ -165,7 +107,7 @@
           <property name="geometry">
            <rect>
             <x>90</x>
-            <y>90</y>
+            <y>110</y>
             <width>75</width>
             <height>24</height>
            </rect>
@@ -173,6 +115,84 @@
           <property name="text">
            <string>Remove</string>
           </property>
+         </widget>
+         <widget class="QPushButton" name="Object_RemoveGroupButton">
+          <property name="geometry">
+           <rect>
+            <x>90</x>
+            <y>140</y>
+            <width>75</width>
+            <height>24</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>RemoveGr</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="radioCar">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>80</y>
+            <width>89</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Car</string>
+          </property>
+         </widget>
+         <widget class="QGroupBox" name="groupBoxColor">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>10</y>
+            <width>81</width>
+            <height>91</height>
+           </rect>
+          </property>
+          <property name="title">
+           <string>Color</string>
+          </property>
+          <widget class="QRadioButton" name="radioRed">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>40</y>
+             <width>41</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Red</string>
+           </property>
+          </widget>
+          <widget class="QRadioButton" name="radioBlue">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>20</y>
+             <width>41</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Blue</string>
+           </property>
+          </widget>
+          <widget class="QRadioButton" name="radioRed_2">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>60</y>
+             <width>41</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>White</string>
+           </property>
+          </widget>
          </widget>
         </widget>
        </item>
@@ -194,6 +214,16 @@
       </layout>
      </widget>
     </item>
+    <item>
+     <widget class="QGraphicsView" name="graphicsView">
+      <property name="dragMode">
+       <enum>QGraphicsView::NoDrag</enum>
+      </property>
+      <property name="viewportUpdateMode">
+       <enum>QGraphicsView::SmartViewportUpdate</enum>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -201,7 +231,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>875</width>
+     <width>971</width>
      <height>22</height>
     </rect>
    </property>

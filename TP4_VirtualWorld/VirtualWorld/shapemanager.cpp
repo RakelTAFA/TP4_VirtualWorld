@@ -17,7 +17,7 @@ void ShapeManager::moveShape(QPointF pos)
 {
 	if (selected == nullptr) return;
 
-	selected->pos = pos;
+	selected->move(pos);
 }
 
 bool ShapeManager::selectShape(int id)
@@ -41,12 +41,11 @@ void ShapeManager::remove(Shape* _shape) {
 	notifyObserver();
 }
 
-
-
 void ShapeManager::removeGroup(Shape* _shape) {
-	for (Shape* shape : getShapes()) {
+	for (Shape* shape : _shape->getShape()) {
 		shapes.append(shape);
 	}
 	shapes.removeOne(_shape);
 	notifyObserver();
 }
+

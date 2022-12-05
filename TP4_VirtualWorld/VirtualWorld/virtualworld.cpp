@@ -2,7 +2,7 @@
 #include "controller.h"
 #include <QDebug>
 
-VirtualWorld::VirtualWorld(QWidget *parent, ShapeManager* sm)
+VirtualWorld::VirtualWorld(QWidget* parent, ShapeManager* sm)
     : QMainWindow(parent), shapeManager(sm)
 {
     ui.setupUi(this);
@@ -12,7 +12,6 @@ VirtualWorld::VirtualWorld(QWidget *parent, ShapeManager* sm)
     shapeManager->addObserver(paintview);
     ui.graphicsView->setScene(paintview);
     paintview->setParent(ui.graphicsView);
-   
 
     // Tree View
     treeview = new TreeView(shapeManager, ui.treeWidget);
@@ -20,8 +19,9 @@ VirtualWorld::VirtualWorld(QWidget *parent, ShapeManager* sm)
 
     // Connect buttons
     connect(ui.Object_AddButton, &QPushButton::pressed, this, &VirtualWorld::addShape);
-    connect(ui.Object_AddButton, &QPushButton::pressed, this, &VirtualWorld::addGroup);
     connect(ui.Object_RemoveButton, &QPushButton::pressed, this, &VirtualWorld::removeShape);
+    connect(ui.Object_GroupButton, &QPushButton::pressed, this, &VirtualWorld::addGroup);
+    connect(ui.Object_RemoveGroupButton, &QPushButton::pressed, this, &VirtualWorld::removeGroup);
 }
 
 VirtualWorld::~VirtualWorld()
@@ -30,6 +30,7 @@ VirtualWorld::~VirtualWorld()
 void VirtualWorld::addShape()
 {
     QString selectedRadio = "";
+    QString selectedColor = "";
 
     if (ui.radioButton_Circle->isChecked()) {
         selectedRadio = "Circle";
@@ -40,29 +41,49 @@ void VirtualWorld::addShape()
     else if (ui.radioButton_Square->isChecked()) {
         selectedRadio = "Square";
     }
+    else if (ui.radioCar->isChecked()) {
 
+    }
+
+    if (ui.radioBlue->isChecked()) {
+        selectedColor = "Blue";
+    }
+    else if (ui.radioRed->isChecked()) {
+        selectedColor = "Red";
+    }
+
+    selectedRadio += "-";
+    selectedRadio += selectedColor;
+
+    paintview->saveSelect();
     ControllerAdd* controller = new ControllerAdd(shapeManager);
     controller->control(selectedRadio);
     delete controller;
+    paintview->setSelect();
 }
-
 
 void VirtualWorld::removeShape() {
     for (QTreeWidgetItem* index : ui.treeWidget->selectedItems()) {
-        paintview->saveSelection();
+        paintview->saveSelect();
         ControllerRemove* controller = new ControllerRemove(shapeManager);
         controller->control(index);
         delete controller;
-        paintview->setSelection();
+        paintview->setSelect();
     }
 }
 
-
-void VirtualWorld::addGroup()
-{
-    paintview->saveSelection();
+void VirtualWorld::addGroup() {
+    paintview->saveSelect();
     ControllerGroup* controller = new ControllerGroup(shapeManager);
     controller->control(paintview->getSelect());
     delete controller;
-    paintview->setSelection();
+    paintview->setSelect();
+}
+
+void VirtualWorld::removeGroup() {
+    paintview->saveSelect();
+    ControllerRemoveGroup* controller = new ControllerRemoveGroup(shapeManager);
+    controller->control(paintview->getSelect());
+    delete controller;
+    paintview->setSelect();
 }

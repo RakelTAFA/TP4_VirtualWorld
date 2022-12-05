@@ -88,6 +88,7 @@
     <QtRcc Include="virtualworld.qrc" />
     <QtUic Include="virtualworld.ui" />
     <QtMoc Include="virtualworld.h" />
+    <ClCompile Include="car.cpp" />
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="group.cpp" />
     <ClCompile Include="shapecircle.cpp" />
