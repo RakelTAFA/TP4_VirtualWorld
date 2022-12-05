@@ -25,11 +25,12 @@ public:
 	void updateModel();
 	void saveSelect();
 	void setSelect();
+	void groupShape();
 	QVector<QGraphicsItem*> getSelect();
+	QVector<QVariant> getSave();
 
 protected:
 
-	void drawBackground(QPainter* painter, const QRectF& rect);
 	void drawForeground(QPainter* painter, const QRectF& rect);
 
 public slots:

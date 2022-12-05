@@ -10,6 +10,6 @@ Voiture::Voiture(QPointF p, double d1, double d2)
 
 	//add(ShapeFactory::createRectCar(s, pos));
 	
-	//QPointF p1();
-	//QPointF p2();
+	QPointF p1();
+	QPointF p2();
 }

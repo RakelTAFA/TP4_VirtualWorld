@@ -8,11 +8,6 @@ PaintView::PaintView(ShapeManager* sm) : QGraphicsScene(), Observer(), shapeMana
 	selectionStarted = false;
 }
 
-void PaintView::drawBackground(QPainter* painter, const QRectF& rect) {
-
-}
-
-
 void PaintView::drawForeground(QPainter* painter, const QRectF& rect)
 {
 	if (toolbox.isEmpty()) return;
@@ -70,9 +65,6 @@ void PaintView::updateModel()
 
 void PaintView::mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent)
 {
-
-
-
 	if (mouseEvent->button() == Qt::LeftButton)
 	{
 		selected.clear();
